@@ -4,21 +4,21 @@ from flask import render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def hello_world():
     return 'Hello World!'
 
-@app.route('/name')
+@app.route('/name', methods=['POST', 'GET'])
 def hello_name():
     return 'my name is hello\n'
 
-@app.route('/index/')
-@app.route('/index/<name>')
+@app.route('/index/', methods=['POST', 'GET'])
+@app.route('/index/<name>', methods=['POST', 'GET'])
 def hello(name=None):
     return render_template('index.html', name=name)
 
-@app.route('/indexa/')
-@app.route('/indexa/<name>')
+@app.route('/indexa/', methods=['POST', 'GET'])
+@app.route('/indexa/<name>', methods=['POST', 'GET'])
 def helloa(name=None):
     return render_template('indexa.html', name=name)
 
