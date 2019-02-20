@@ -4,27 +4,15 @@ from flask import request, session
 
 app = Flask(__name__)
 
+
 @app.before_request
-def myredirect():
-    if not request.path=='/':
-        username = request.args.get('username')
-        if not username:
-            return redirect('/')
-        else:
-            print 'success'
-
-@app.route('/', methods=['POST', 'GET'])
-def hello_world():
-    return 'Hello  World!'
-
-
-@app.route('/name', methods=['POST', 'GET'])
-def hello_name():
-    return 'this is name\n'
-
-@app.route('/show', methods=['POST', 'GET'])
-def show():
-    return 'this is show \n'
+def before_action():
+    print request.path
+    if request.path.find('.ico') == -1:
+        if not request.path == '/login':
+            if not 'username' in session:
+                session['newurl'] = request.path
+                return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -51,11 +39,7 @@ def home():
 
 @app.route('/test')
 def test():
-    if 'username' in session:
-        return render_template('test.html')
-    else:
-        session['newurl'] = 'test'
-        return redirect(url_for('login'))
+    return render_template('test.html')
 
 
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
