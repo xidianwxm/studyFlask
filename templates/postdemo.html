@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <form action="{{ url_for('login') }}" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>功能号:</td>
+                    <td><input type="text"  placeholder="请输入功能号" name="funcid"></td>
+                </tr>
+                <tr>
+                    <td>请求串:</td>
+                    <td><input type="text" style="width:500px; height:80px" placeholder="请输入请求串" name="reqstr"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="提交"></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+<!--一旦点击连接就会访问视图函数search，通过视图函数来反转URL，URL的参数是q，值为hello：就会返回url:http://127.0.0.1:5000/search/?q=hello-->
+    <a href="{{ url_for('search',q='hello') }}">跳转到搜索页面</a>
+</body>
+</html>
